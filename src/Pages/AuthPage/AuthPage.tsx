@@ -23,17 +23,21 @@ const AuthPage = () => {
       return
     }
 
-    const isNameExist = await UserService.checkIsValidName(value.trim())
+    try {
+      const isNameExist = await UserService.checkIsValidName(value.trim())
 
-    if(isNameExist) {
-      setError('This name is already exist')
-      return
+      if(isNameExist) {
+        setError('This name is already exist')
+        return
+      }
+
+      setName(value.trim())
+      setError('')
+      setValue('')
+      navigate('/')
+    } catch (e) {
+      setError(e.message)
     }
-
-    setName(value.trim())
-    setError('')
-    setValue('')
-    navigate('/')
   }
 
   return (
