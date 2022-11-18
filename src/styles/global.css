@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background-primary: #282c34;
+    --background-secondary: #282535;
+    --background-input: #3a3a3a;
+  }
+
+  body {
+    font-family: sans-serif;
+    background-color: var(--background-primary);
+  }
+}
+
+@layer utilities {
+  .scrollbar::-webkit-scrollbar {
+    width: 0.25rem;
+  }
+}
