@@ -10,7 +10,11 @@ class UserService {
   }
 
   checkIsValidName = async (name: string) => {
-    const { data } = await this.api.post<string, AxiosResponse<boolean>>('names', { name })
+    const { data } = await this.api.get<null, AxiosResponse<boolean>>('names', { 
+      params: {
+        name
+      }
+     })
 
     return data
   }
