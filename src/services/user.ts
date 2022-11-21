@@ -5,7 +5,7 @@ class UserService {
 
   constructor() {
     this.api = axios.create({
-      baseURL: 'http://localhost:8080/'
+      baseURL: 'https://chat-app-be-dhgf.onrender.com/'
     })
   }
 
