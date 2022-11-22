@@ -3,11 +3,12 @@ import { useLocalStorage } from 'hooks'
 import { useNavigate } from 'react-router'
 import UserService from 'services/user'
 
-import { Button } from 'components'
+import { Button, Loader } from 'components'
 
 const AuthPage = () => {
   const [value, setValue] = useState('')
   const [error, setError] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
   const [ , setName] = useLocalStorage('userName')
   const navigate = useNavigate()
 
@@ -22,8 +23,9 @@ const AuthPage = () => {
       setError('Wrong name')
       return
     }
-
+    
     try {
+      setIsLoading(true)
       const isNameExist = await UserService.checkIsValidName(value.trim())
 
       if(isNameExist) {
@@ -32,11 +34,13 @@ const AuthPage = () => {
       }
 
       setName(value.trim())
-      setError('')
       setValue('')
+      setError('')
       navigate('/')
     } catch (e) {
       setError(e.message)
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -57,8 +61,10 @@ const AuthPage = () => {
             error && error
           }
         </p>
-        <Button type='submit'>
-          Sign In
+        <Button type='submit' className='h-[52px]'>
+          {
+            isLoading ? <Loader /> : 'Sign In'
+          }
         </Button>
       </form>
     </section>
