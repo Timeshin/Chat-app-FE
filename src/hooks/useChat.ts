@@ -4,7 +4,7 @@ import { useLocalStorage } from 'hooks'
 import { IMessageData } from 'interfaces/hooks/hooks.interfaces'
 import { ChatEvents } from 'interfaces/enums/chatEvent.enum'
 
-const API_URL = 'https://chat-app-be-dhgf.onrender.com/'
+const API_URL = process.env.REACT_APP_URL as string
 
 const useChat = () => {
   const [messages, setMessages] = useState<IMessageData[]>([])

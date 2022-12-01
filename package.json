@@ -1,7 +1,6 @@
 {
   "name": "chatapp",
   "version": "0.1.0",
-  "homepage": "https://Timeshin.github.io/Chat-app-FE",
   "private": true,
   "dependencies": {
     "@tailwindcss/forms": "^0.5.3",

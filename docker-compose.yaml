@@ -6,8 +6,11 @@ services:
     ports:
       - "3000:3000"
     container_name: chat-client
+    volumes:
+      - ./src:/app/src
   server:
     build: ../BE
     ports:
       - "8080:8080"
     container_name: chat-server
+
